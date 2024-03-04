@@ -112,6 +112,6 @@ iptables -A FORWARD -i enp0s9 -d 172.5.0.2 -s 172.5.2.100 -p tcp --dport 22 -m c
 iptables -A FORWARD -i enp0s3 -d 172.5.2.100 -s 172.5.0.2 -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
 
 # Tráfico DMZ desde el exterior para servicios expuestos en DMZ (80)
-iptables -A FORWARD -d 172.2.1.2 -o enp0s3 -p tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -s 172.2.1.2 -o enp0s8 -p tcp --sport 80 -m conntrack --ctstate ESTABLISHED -j ACCEPT 
+iptables -A FORWARD -d 172.5.1.2 -o enp0s3 -p tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -s 172.5.1.2 -o enp0s8 -p tcp --sport 80 -m conntrack --ctstate ESTABLISHED -j ACCEPT 
 
